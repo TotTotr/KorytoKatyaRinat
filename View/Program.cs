@@ -1,4 +1,5 @@
-﻿using Database.Implements;
+﻿using Database;
+using Database.Implements;
 using Logic.BusinessLogic;
 using Logic.Interfaces;
 using System;
@@ -38,6 +39,7 @@ namespace View
             currentContainer.RegisterType<ICarLogic, CarLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IClientLogic, ClientLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IRequestLogic, RequestLogic>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<KorytoBackupBusinessLogic, KorytoBackupLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<MainLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<ReportLogic>(new HierarchicalLifetimeManager());
 
