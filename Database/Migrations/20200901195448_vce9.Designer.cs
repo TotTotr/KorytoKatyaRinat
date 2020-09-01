@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Database.Migrations
 {
     [DbContext(typeof(KorytoDatabase))]
-    [Migration("20200827014808_t68")]
-    partial class t68
+    [Migration("20200901195448_vce9")]
+    partial class vce9
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,11 +32,11 @@ namespace Database.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("FullPrice")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("FullPrice")
+                        .HasColumnType("int");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
 
                     b.Property<int>("Year")
                         .HasColumnType("int");
@@ -62,8 +62,8 @@ namespace Database.Migrations
                     b.Property<int>("DetailId")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("Sum")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("Sum")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -113,8 +113,8 @@ namespace Database.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
 
                     b.Property<int>("TotalAmount")
                         .HasColumnType("int");
@@ -159,17 +159,14 @@ namespace Database.Migrations
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("DateCreate")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("DateImplement")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");

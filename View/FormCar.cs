@@ -24,7 +24,7 @@ namespace View
 
         private int? id;
 
-        private Dictionary<int, (string, int, decimal)> carDetails;
+        private Dictionary<int, (string, int, int)> carDetails;
 
         public FormCar(ICarLogic logic)
         {
@@ -62,13 +62,13 @@ namespace View
             }
             else
             {
-                carDetails = new Dictionary<int, (string, int, decimal)>();
+                carDetails = new Dictionary<int, (string, int, int)>();
             }
         }
 
         private void LoadData()
         {
-            decimal Sum = 0;
+            int Sum = 0;
             try
             {
                 if (carDetails != null)
@@ -79,7 +79,7 @@ namespace View
                         dataGridView.Rows.Add(new object[] { pc.Key, pc.Value.Item1, pc.Value.Item2, pc.Value.Item3 });
                         Sum += pc.Value.Item3;
                     }
-                    Sum += Convert.ToDecimal(textBoxPriceCar.Text);
+                    Sum += Convert.ToInt32(textBoxPriceCar.Text);
                     textBoxPrice.Text = Sum.ToString() ;
                 }
             }
@@ -165,8 +165,8 @@ namespace View
                 {
                     Id = id,
                     CarName = textBoxName.Text,
-                    Price = Convert.ToDecimal(textBoxPriceCar.Text),
-                    FullPrice = Convert.ToDecimal(textBoxPrice.Text),
+                    Price = Convert.ToInt32(textBoxPriceCar.Text),
+                    FullPrice = Convert.ToInt32(textBoxPrice.Text),
                     Year = Convert.ToInt32(textBoxYear.Text),
                     CarDetails = carDetails
                 });

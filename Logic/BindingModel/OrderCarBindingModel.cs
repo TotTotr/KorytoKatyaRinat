@@ -24,7 +24,7 @@ namespace Logic.BindingModel
         public int Count { get; set; }
 
         [DataMember]
-        public decimal Price { get; set; }
+        public int Price { get; set; }
 
     }
 }

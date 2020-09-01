@@ -14,7 +14,7 @@ namespace Database.Models
         public string DetailName { get; set; }
 
         [Required]
-        public decimal Price { get; set; }
+        public int Price { get; set; }
 
         [Required]
         public int TotalAmount { get; set; }

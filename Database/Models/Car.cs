@@ -14,9 +14,9 @@ namespace Database.Models
         public string CarName { get; set; }
 
         [Required]
-        public decimal Price { get; set; }
+        public int Price { get; set; }
 
-        public decimal FullPrice { get; set; }
+        public int FullPrice { get; set; }
 
         [Required]
         public int Year { get; set; }

@@ -19,7 +19,7 @@ namespace Logic.BindingModel
         public int? CarId { get; set; }
 
         [DataMember]
-        public decimal Price { get; set; }
+        public int Price { get; set; }
 
         [DataMember]
         public OrderStatus Status { get; set; }

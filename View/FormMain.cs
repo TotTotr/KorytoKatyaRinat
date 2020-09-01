@@ -188,6 +188,14 @@ namespace View
         {
             var form = Container.Resolve<FormReport>();
             form.ShowDialog();
+
+        }
+
+        private void buttonStat_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormStatistic>();
+            form.ShowDialog();
+            LoadData();
         }
     }
 }

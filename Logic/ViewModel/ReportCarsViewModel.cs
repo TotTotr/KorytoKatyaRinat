@@ -8,9 +8,9 @@ namespace Logic.ViewModel
     {
         public string CarName { get; set; }
 
-        public decimal Price { get; set; }
+        public int Price { get; set; }
 
-        public decimal FullPrice { get; set; }
+        public int FullPrice { get; set; }
 
         public int Year { get; set; }
     }
