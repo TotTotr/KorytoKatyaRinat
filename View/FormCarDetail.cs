@@ -35,7 +35,7 @@ namespace View
             set { textBoxCount.Text = value.ToString(); }
         }
 
-        public decimal PlusSum;
+        public int PlusSum;
 
         public FormCarDetail(IDetailLogic logicP)
         {
@@ -81,7 +81,7 @@ namespace View
                     int id = Convert.ToInt32(comboBoxDetail.SelectedValue);
                     DetailViewModel Detail = logicP.Read(new DetailBindingModel { Id = id })?[0];
                     int count = Convert.ToInt32(textBoxCount.Text);
-                    decimal sum = count * Detail?.Price ?? 0;
+                    int sum = count * Detail?.Price ?? 0;
                     textBoxPlusSum.Text = sum.ToString();
                     PlusSum = sum;
                 }

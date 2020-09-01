@@ -26,7 +26,7 @@ namespace Logic.ViewModel
 
         [DataMember]
         [DisplayName("Сумма")]
-        public decimal Price { get; set; }
+        public int Price { get; set; }
 
         [DataMember]
         [DisplayName("Статус заказа")]

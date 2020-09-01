@@ -17,7 +17,7 @@ namespace Database.Models
         public int Count { get; set; }
 
         [Required]
-        public decimal Sum { get; set; }
+        public int Sum { get; set; }
 
         public virtual Detail Detail { get; set; }
 

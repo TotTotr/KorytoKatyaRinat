@@ -146,9 +146,9 @@ namespace web.Controllers
             return RedirectToAction("Order");
         }
 
-        private decimal CalculateSum(List<OrderCarBindingModel> orderCars)
+        private int CalculateSum(List<OrderCarBindingModel> orderCars)
         {
-            decimal sum = 0;
+            int sum = 0;
 
             foreach (var car in orderCars)
             {

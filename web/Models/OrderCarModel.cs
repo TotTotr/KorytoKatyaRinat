@@ -11,7 +11,7 @@ namespace web.Models
 
         public int Year { get; set; }
 
-        public decimal Price { get; set; }
+        public int Price { get; set; }
 
         public int Count { get; set; }
     }

@@ -15,14 +15,14 @@ namespace Logic.BindingModel
         public string CarName { get; set; }
 
         [DataMember]
-        public decimal Price { get; set; }
+        public int Price { get; set; }
 
         [DataMember]
-        public decimal FullPrice { get; set; }
+        public int FullPrice { get; set; }
 
         [DataMember]
         public int Year { get; set; }
 
-        public Dictionary<int, (string, int, decimal)> CarDetails { get; set; }
+        public Dictionary<int, (string, int, int)> CarDetails { get; set; }
     }
 }

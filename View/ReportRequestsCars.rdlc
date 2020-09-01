@@ -51,11 +51,11 @@
         </Field>
         <Field Name="FullPrice">
           <DataField>FullPrice</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
+          <rd:TypeName>System.int</rd:TypeName>
         </Field>
         <Field Name="Price">
           <DataField>Price</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
+          <rd:TypeName>System.int</rd:TypeName>
         </Field>
         <Field Name="Year">
           <DataField>Year</DataField>

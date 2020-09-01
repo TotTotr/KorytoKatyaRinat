@@ -15,7 +15,7 @@ namespace Logic.BindingModel
         public string DetailName { get; set; }
 
         [DataMember]
-        public decimal Price { get; set; }
+        public int Price { get; set; }
 
         [DataMember]
         public int TotalAmount { get; set; }

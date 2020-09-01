@@ -14,7 +14,7 @@ namespace Database.Models
         public int ClientId { get; set; }
 
         [Required]
-        public decimal Price { get; set; }
+        public int Price { get; set; }
 
         [Required]
         public OrderStatus Status { get; set; }

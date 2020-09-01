@@ -3,25 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Database.Migrations
 {
-    public partial class InitialCreate2 : Migration
+    public partial class vce9 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Admins",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    AdminFIO = table.Column<string>(nullable: false),
-                    Login = table.Column<string>(nullable: false),
-                    Password = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Admins", x => x.Id);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Cars",
                 columns: table => new
@@ -29,7 +14,8 @@ namespace Database.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CarName = table.Column<string>(nullable: false),
-                    Price = table.Column<decimal>(nullable: false),
+                    Price = table.Column<int>(nullable: false),
+                    FullPrice = table.Column<int>(nullable: false),
                     Year = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -45,6 +31,7 @@ namespace Database.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ClientFIO = table.Column<string>(nullable: false),
                     Mail = table.Column<string>(nullable: false),
+                    Login = table.Column<string>(nullable: false),
                     Password = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -59,12 +46,26 @@ namespace Database.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DetailName = table.Column<string>(nullable: false),
-                    Price = table.Column<decimal>(nullable: false),
+                    Price = table.Column<int>(nullable: false),
                     TotalAmount = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Details", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Requests",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RequestName = table.Column<string>(nullable: false),
+                    DateCreate = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Requests", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -74,9 +75,7 @@ namespace Database.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ClientId = table.Column<int>(nullable: false),
-                    CarId = table.Column<int>(nullable: false),
-                    Count = table.Column<int>(nullable: false),
-                    TotalSum = table.Column<decimal>(nullable: false),
+                    Price = table.Column<int>(nullable: false),
                     Status = table.Column<int>(nullable: false),
                     DateCreate = table.Column<DateTime>(nullable: false),
                     DateImplement = table.Column<DateTime>(nullable: true)
@@ -84,12 +83,6 @@ namespace Database.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Orders", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Orders_Cars_CarId",
-                        column: x => x.CarId,
-                        principalTable: "Cars",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Orders_Clients_ClientId",
                         column: x => x.ClientId,
@@ -107,7 +100,7 @@ namespace Database.Migrations
                     CarId = table.Column<int>(nullable: false),
                     DetailId = table.Column<int>(nullable: false),
                     Count = table.Column<int>(nullable: false),
-                    Sum = table.Column<decimal>(nullable: false)
+                    Sum = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -127,28 +120,55 @@ namespace Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Requests",
+                name: "DetailRequests",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AdminId = table.Column<int>(nullable: false),
+                    RequestId = table.Column<int>(nullable: false),
                     DetailId = table.Column<int>(nullable: false),
-                    DateCreate = table.Column<DateTime>(nullable: false)
+                    Count = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Requests", x => x.Id);
+                    table.PrimaryKey("PK_DetailRequests", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Requests_Admins_AdminId",
-                        column: x => x.AdminId,
-                        principalTable: "Admins",
+                        name: "FK_DetailRequests_Details_DetailId",
+                        column: x => x.DetailId,
+                        principalTable: "Details",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Requests_Details_DetailId",
-                        column: x => x.DetailId,
-                        principalTable: "Details",
+                        name: "FK_DetailRequests_Requests_RequestId",
+                        column: x => x.RequestId,
+                        principalTable: "Requests",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OrderCars",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OrderId = table.Column<int>(nullable: false),
+                    CarId = table.Column<int>(nullable: false),
+                    Count = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderCars", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OrderCars_Cars_CarId",
+                        column: x => x.CarId,
+                        principalTable: "Cars",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_OrderCars_Orders_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "Orders",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -164,24 +184,29 @@ namespace Database.Migrations
                 column: "DetailId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_CarId",
-                table: "Orders",
+                name: "IX_DetailRequests_DetailId",
+                table: "DetailRequests",
+                column: "DetailId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DetailRequests_RequestId",
+                table: "DetailRequests",
+                column: "RequestId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderCars_CarId",
+                table: "OrderCars",
                 column: "CarId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderCars_OrderId",
+                table: "OrderCars",
+                column: "OrderId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_ClientId",
                 table: "Orders",
                 column: "ClientId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Requests_AdminId",
-                table: "Requests",
-                column: "AdminId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Requests_DetailId",
-                table: "Requests",
-                column: "DetailId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -190,7 +215,13 @@ namespace Database.Migrations
                 name: "CarDetails");
 
             migrationBuilder.DropTable(
-                name: "Orders");
+                name: "DetailRequests");
+
+            migrationBuilder.DropTable(
+                name: "OrderCars");
+
+            migrationBuilder.DropTable(
+                name: "Details");
 
             migrationBuilder.DropTable(
                 name: "Requests");
@@ -199,13 +230,10 @@ namespace Database.Migrations
                 name: "Cars");
 
             migrationBuilder.DropTable(
+                name: "Orders");
+
+            migrationBuilder.DropTable(
                 name: "Clients");
-
-            migrationBuilder.DropTable(
-                name: "Admins");
-
-            migrationBuilder.DropTable(
-                name: "Details");
         }
     }
 }

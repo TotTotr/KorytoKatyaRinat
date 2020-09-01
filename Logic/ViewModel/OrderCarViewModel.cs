@@ -24,7 +24,7 @@ namespace Logic.ViewModel
         public int Year { get; set; }
 
         [DataMember]
-        public decimal Price { get; set; }
+        public int Price { get; set; }
 
         [DataMember]
         public int Count { get; set; }

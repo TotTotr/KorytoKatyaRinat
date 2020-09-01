@@ -23,7 +23,7 @@ namespace View
 
         private int? id;
 
-        public static decimal PriceDetail;
+        public static int PriceDetail;
 
         public FormDetail(IDetailLogic logic)
         {
@@ -71,12 +71,12 @@ namespace View
             }
             try
             {
-                PriceDetail = Convert.ToDecimal(textBoxPrice.Text);
+                PriceDetail = Convert.ToInt32(textBoxPrice.Text);
                 logic.CreateOrUpdate(new DetailBindingModel
                 {
                     Id = id,
                     DetailName = textBoxName.Text,
-                    Price = Convert.ToDecimal(textBoxPrice.Text),
+                    Price = Convert.ToInt32(textBoxPrice.Text),
                     TotalAmount = Convert.ToInt32(textBoxCount.Text)
                 });
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
