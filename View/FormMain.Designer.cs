@@ -43,6 +43,7 @@
             this.buttonRef = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.buttonStat = new System.Windows.Forms.Button();
+            this.Backup_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.menuStripSpravochnik.SuspendLayout();
             this.SuspendLayout();
@@ -147,6 +148,16 @@
             this.buttonOrderReady.UseVisualStyleBackColor = true;
             this.buttonOrderReady.Click += new System.EventHandler(this.buttonOrderReady_Click);
             // 
+            // Backup_button
+            // 
+            this.Backup_button.Location = new System.Drawing.Point(793, 290);
+            this.Backup_button.Name = "Backup_button";
+            this.Backup_button.Size = new System.Drawing.Size(110, 23);
+            this.Backup_button.TabIndex = 19;
+            this.Backup_button.Text = "Создать бекап";
+            this.Backup_button.UseVisualStyleBackColor = true;
+            this.Backup_button.Click += new System.EventHandler(this.Backup_Click);
+            // 
             // buttonPayOrder
             // 
             this.buttonPayOrder.Location = new System.Drawing.Point(779, 126);
@@ -195,6 +206,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(915, 392);
             this.Controls.Add(this.buttonStat);
+            this.Controls.Add(this.Backup_button);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonRef);
             this.Controls.Add(this.buttonPayOrder);
@@ -230,5 +242,6 @@
         private System.Windows.Forms.ToolStripMenuItem заявкиToolStripMenuItem;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button buttonStat;
+        private System.Windows.Forms.Button Backup_button;
     }
 }

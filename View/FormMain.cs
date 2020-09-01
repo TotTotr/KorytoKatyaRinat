@@ -23,11 +23,14 @@ namespace View
 
         private readonly IOrderLogic orderLogic;
 
-        public FormMain(MainLogic logic, IOrderLogic orderLogic)
+        private readonly KorytoBackupBusinessLogic back;
+
+        public FormMain(MainLogic logic, IOrderLogic orderLogic, KorytoBackupBusinessLogic back)
         {
             InitializeComponent();
             this.logic = logic;
             this.orderLogic = orderLogic;
+            this.back = back;
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -160,6 +163,29 @@ namespace View
             var form = Container.Resolve<FormStatistic>();
             form.ShowDialog();
             LoadData();
+        }
+
+        private void Backup_Click(object sender, EventArgs e)
+
+        {
+            try
+            {
+                if (back != null)
+                {
+                    var fbd = new FolderBrowserDialog();
+                    if (fbd.ShowDialog() == DialogResult.OK)
+                    {
+                        back.CreateArchive(fbd.SelectedPath);
+                        MessageBox.Show("Бекап создан", "Сообщение",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
+               MessageBoxIcon.Error);
+            }
         }
     }
 }
