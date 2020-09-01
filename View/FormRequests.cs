@@ -1,4 +1,5 @@
 ﻿using Logic.BindingModel;
+using Logic.BusinessLogic;
 using Logic.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -19,11 +20,13 @@ namespace View
         public new IUnityContainer Container { get; set; }
 
         private readonly IRequestLogic logic;
+        private readonly ReportLogic report;
 
-        public FormRequests(IRequestLogic logic)
+        public FormRequests(IRequestLogic logic, ReportLogic report)
         {
             InitializeComponent();
             this.logic = logic;
+            this.report = report;
         }
 
         private void FormRequests_Load(object sender, EventArgs e)
@@ -96,9 +99,27 @@ namespace View
                 }
             }
         }
-        private void buttonRef_Click(object sender, EventArgs e)
+
+        private void button1_Click(object sender, EventArgs e)
         {
-            LoadData();
+            string mail = "mr.alodov@mail.ru";
+            if (textBoxEmail != null)
+            {
+                mail = textBoxEmail.Text;
+            }
+            string fileName = "Заявки.docx";
+            report.SaveDetailRequestsToWordlFile(fileName, mail) ;
+        }
+
+        private void ButtonSaveToExcel_Click(object sender, EventArgs e)
+        {
+            string mail = "mr.alodov@mail.ru";
+            if (textBoxEmail != null)
+            {
+                mail = textBoxEmail.Text;
+            }
+            string fileName = "Заявки.xlsx";
+            report.SaveDetailRequestsToExcellFile(fileName, mail);
         }
     }
 }

@@ -36,8 +36,6 @@
             this.клиентыToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.заявкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ReqWordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ReqExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonakeOrderInWork = new System.Windows.Forms.Button();
             this.buttonOrderReady = new System.Windows.Forms.Button();
@@ -114,24 +112,10 @@
             // отчетыToolStripMenuItem
             // 
             this.отчетыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ReqWordToolStripMenuItem,
-            this.ReqExcelToolStripMenuItem,
             this.OrdersToolStripMenuItem});
             this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
             this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.отчетыToolStripMenuItem.Text = "Отчеты";
-            // 
-            // ReqWordToolStripMenuItem
-            // 
-            this.ReqWordToolStripMenuItem.Name = "ReqWordToolStripMenuItem";
-            this.ReqWordToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.ReqWordToolStripMenuItem.Text = "Список заявок ворд";
-            // 
-            // ReqExcelToolStripMenuItem
-            // 
-            this.ReqExcelToolStripMenuItem.Name = "ReqExcelToolStripMenuItem";
-            this.ReqExcelToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.ReqExcelToolStripMenuItem.Text = "Список заявок эксель";
             // 
             // OrdersToolStripMenuItem
             // 
@@ -226,8 +210,6 @@
         private System.Windows.Forms.ToolStripMenuItem машиныToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem клиентыToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem отчетыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ReqWordToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ReqExcelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem OrdersToolStripMenuItem;
         private System.Windows.Forms.Button buttonakeOrderInWork;
         private System.Windows.Forms.Button buttonOrderReady;

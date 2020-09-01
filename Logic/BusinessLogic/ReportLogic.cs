@@ -107,9 +107,9 @@ namespace Logic.BusinessLogic
         }
 
         //ворд админ
-        public void SaveDetailRequestsToWordlFile(string fileName, RequestViewModel req, string email)
+        public void SaveDetailRequestsToWordlFile(string fileName, string email)
         {
-            string title = "Заявка" + req.RequestName;
+            string title = "Заявки";
             SaveToWord.CreateDoc(new WordInfo
             {
                 FileName = fileName,
@@ -120,9 +120,9 @@ namespace Logic.BusinessLogic
         }
 
         //ексель админ
-        public void SaveDetailRequestsToExcellFile(string fileName, RequestViewModel req, string email)
+        public void SaveDetailRequestsToExcellFile(string fileName, string email)
         {
-            string title = "заявка" + req.RequestName;
+            string title = "Заявки";
             SaveToExcel.CreateDoc(new ExcelInfo
             {
                 FileName = fileName,

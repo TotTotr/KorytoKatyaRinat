@@ -21,15 +21,12 @@ namespace View
 
         private readonly MainLogic logic;
 
-        private readonly ReportLogic report;
-
         private readonly IOrderLogic orderLogic;
 
-        public FormMain(MainLogic logic, ReportLogic report, IOrderLogic orderLogic)
+        public FormMain(MainLogic logic, IOrderLogic orderLogic)
         {
             InitializeComponent();
             this.logic = logic;
-            this.report = report;
             this.orderLogic = orderLogic;
         }
 
@@ -145,39 +142,6 @@ namespace View
             var form = Container.Resolve<FormRequests>();
             form.ShowDialog();
         }
-
-        /*private void RequestsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (var dialog = new SaveFileDialog { Filter = "docx|*.docx" })
-            {
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    report.SaveDetailRequestsToWordlFile(new ReportBindingModel
-                    {
-                        FileName = dialog.FileName
-                    });
-                    MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK,
-                   MessageBoxIcon.Information);
-                }
-            }
-        }
-
-        private void ReqExcelToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (var dialog = new SaveFileDialog { Filter = "xlsx|*.xlsx" })
-            {
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    report.SaveDetailRequestsToExcellFile(new ReportBindingModel
-                    {
-                        FileName = dialog.FileName
-                    });
-                    MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK,
-                   MessageBoxIcon.Information);
-                }
-            }
-        }*/
-
         private void button1_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormRaz>();
